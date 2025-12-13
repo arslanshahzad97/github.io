@@ -101,7 +101,77 @@ ul {
     background: var(--white);
     transition: 0.3s;
 }
+/* ========== NAVBAR MOBILE ========== */
+/* Mobile Navigation Container */
+.container.mobile-nav-links {
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition: max-height 0.4s ease-out, opacity 0.3s ease-out;
+}
 
+.container.mobile-nav-links.active {
+    max-height: 400px; /* Adjust based on content */
+    opacity: 1;
+}
+
+/* Mobile Nav Links */
+.mobile-nav-links ul.nav-links {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 15px;
+    align-items: center;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.mobile-nav-links .nav-links li {
+    width: 100%;
+    text-align: center;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.mobile-nav-links .nav-links li:hover {
+    background: var(--primary);
+    transform: scale(1.02);
+}
+
+.mobile-nav-links .nav-links li a {
+    transition: color 0.3s ease;
+}
+
+.mobile-nav-links .nav-links li:hover a {
+    color: var(--white);
+}
+/* ========== NAVBAR MOBILE ========== */
+.project-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s;
+    background: linear-gradient(135deg, var(--dark-light) 0%, var(--dark) 100%);
+    min-height: 200px;
+}
+
+/* Loading animation */
+.project-image img[src*="microlink"] {
+    background: linear-gradient(
+        90deg,
+        var(--dark-light) 25%,
+        var(--dark) 50%,
+        var(--dark-light) 75%
+    );
+    background-size: 200% 100%;
+    animation: loading 1.5s infinite;
+}
+
+@keyframes loading {
+    0% { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
+}
 /* ========== HERO ========== */
 .hero {
     min-height: 100vh;

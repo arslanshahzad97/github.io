@@ -2,13 +2,32 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Mobile Navigation
     const hamburger = document.querySelector('.hamburger');
-    const navLinks = document.querySelector('.nav-links');
+    const mobileNav = document.querySelector('.container.mobile-nav-links');
+    const mobileNavLinks = document.querySelectorAll('.mobile-nav-links .nav-links li a');
 
+    // Toggle menu on hamburger click
     if (hamburger) {
         hamburger.addEventListener('click', () => {
-            navLinks.classList.toggle('active');
+            hamburger.classList.toggle('active');
+            mobileNav.classList.toggle('active');
         });
     }
+
+    // Close menu when clicking on any link
+    mobileNavLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            hamburger.classList.remove('active');
+            mobileNav.classList.remove('active');
+        });
+    });
+
+    // Optional: Close menu when clicking outside
+    document.addEventListener('click', (e) => {
+        if (!hamburger.contains(e.target) && !mobileNav.contains(e.target)) {
+            hamburger.classList.remove('active');
+            mobileNav.classList.remove('active');
+        }
+    });
 
     // Project Filtering
     const filterBtns = document.querySelectorAll('.filter-btn');
